@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Animation and Pictures Example</title>
+  <style>
+    .picture {
+      display: none;
+      width: 200px;
+      height: auto;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Animation and Pictures Example</h1>
+  
+  <div id="animate"></div>
+  
+  <button onclick="addPicture()">Add Picture (Single Click)</button>
+  <button ondblclick="addPictures()">Add Pictures (Double Click)</button>
+  
+  <div id="pictureContainer"></div>
+  
+  <script>
+    var pictureContainer = document.getElementById('pictureContainer');
+    
+    function addPicture() {
+      var picture = document.createElement('img');
+      picture.setAttribute('src', 'https://wallup.net/wp-content/uploads/2016/01/263693-nature-landscape-wildflowers-trees-calm-river-water-overcast-clouds.jpg');
+      picture.className = 'picture';
+      pictureContainer.appendChild(picture);
+      picture.style.display = 'block';
+    }
+    
+    function addPictures() {
+      for (var i = 0; i < 2; i++) {
+        var picture = document.createElement('img');
+        picture.setAttribute('src', 'https://media.blogto.com/articles/201731-sunrise-ed.jpg?width=1300&quality=70');
+        picture.className = 'picture';
+        pictureContainer.appendChild(picture);
+        picture.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

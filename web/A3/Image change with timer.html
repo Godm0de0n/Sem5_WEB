@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Timer</title>
+  <style>
+    #imageContainer {
+      width: 400px;
+      height: 400px;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #imageContainer img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    #timer {
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Timer</h1>
+
+  <div id="imageContainer">
+    <img id="image" src="https://images.unsplash.com/photo-1517458776179-baae60e41ef2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Default Image">
+  </div>
+
+  <p id="timer">0 seconds</p>
+
+  <script>
+    var images = [
+    "https://images.unsplash.com/photo-1614089481913-023f413010e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+    "https://images.unsplash.com/photo-1616501998639-04447c1dd713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+    "https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+    ];
+
+    var currentIndex = 0;
+    var timerElement = document.getElementById("timer");
+
+    function changeImage() {
+    var imageContainer = document.getElementById("imageContainer");
+    var image = document.getElementById("image");
+
+    currentIndex = (currentIndex + 1) % images.length;
+    var imageUrl = images[currentIndex];
+    image.src = imageUrl;
+
+    clearInterval(timer);
+    startTimer();
+    }
+
+    function startTimer() {
+    var seconds = 0;
+    timerElement.textContent = "0 seconds";
+
+    var timer = setInterval(function() {
+        seconds++;
+        timerElement.textContent = seconds + " seconds";
+    }, 1000);
+
+    setTimeout(changeImage, 5000);
+    }
+
+    startTimer();
+
+  </script>
+</body>
+</html>

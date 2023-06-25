@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Matrix Transpose</title>
+</head>
+<style>
+    .transpose-table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    }
+
+    .transpose-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    }
+
+</style>
+<body>
+  <h1>Matrix Transpose</h1>
+
+  <label for="rows">Number of Rows:</label>
+  <input type="number" id="rows" min="1" max="10">
+  
+  <label for="columns">Number of Columns:</label>
+  <input type="number" id="columns" min="1" max="10">
+  
+  <button onclick="createMatrix()">Create Matrix</button>
+  
+  <div id="matrixContainer"></div>
+  
+  <button onclick="calculateTranspose()">Calculate Transpose</button>
+  
+  <div id="result"></div>
+  
+  <script>
+    function createMatrix() {
+    var rows = parseInt(document.getElementById("rows").value);
+    var columns = parseInt(document.getElementById("columns").value);
+
+    var matrixContainer = document.getElementById("matrixContainer");
+    matrixContainer.innerHTML = ""; // Clear any existing elements
+
+    for (var i = 0; i < rows; i++) {
+        for (var j = 0; j < columns; j++) {
+        var input = document.createElement("input");
+        input.type = "number";
+        input.id = "element" + i + "-" + j;
+        matrixContainer.appendChild(input);
+        }
+        matrixContainer.appendChild(document.createElement("br"));
+    }
+    }
+
+    function calculateTranspose() {
+    var rows = parseInt(document.getElementById("rows").value);
+    var columns = parseInt(document.getElementById("columns").value);
+
+    var transpose = [];
+
+    for (var j = 0; j < columns; j++) {
+        var row = [];
+        for (var i = 0; i < rows; i++) {
+        var element = parseInt(
+            document.getElementById("element" + i + "-" + j).value
+        );
+        row.push(element);
+        }
+        transpose.push(row);
+    }
+
+    displayTranspose(transpose);
+    }
+
+    function displayTranspose(transpose) {
+    var resultContainer = document.getElementById("result");
+    resultContainer.innerHTML = ""; // Clear any existing result
+
+    var table = document.createElement("table");
+    table.className = "transpose-table";
+
+    for (var i = 0; i < transpose.length; i++) {
+        var row = document.createElement("tr");
+
+        for (var j = 0; j < transpose[i].length; j++) {
+        var cell = document.createElement("td");
+        cell.textContent = transpose[i][j];
+        row.appendChild(cell);
+        }
+
+        table.appendChild(row);
+    }
+
+    resultContainer.appendChild(table);
+    }
+
+
+  </script>
+</body>
+</html>

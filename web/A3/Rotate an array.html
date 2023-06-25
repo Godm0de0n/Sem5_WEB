@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cyclically Rotate Array</title>
+</head>
+<body>
+  <h1>Cyclically Rotate Array</h1>
+  <label for="inputArray">Enter an array:</label>
+  <input type="text" id="inputArray" placeholder="e.g., 1, 2, 3, 4, 5">
+  <br>
+  <button onclick="startRotation()">Start Rotation</button>
+  <button onclick="stopRotation()">Stop Rotation</button>
+  <p id="result"></p>
+
+  <script>
+    var intervalId;
+
+    function startRotation() {
+      var inputArray = document.getElementById("inputArray").value;
+    
+      var array = inputArray.split(',').map(function(item) {
+        return item.trim();
+      });
+    
+      intervalId = setInterval(function() {
+        var lastElement = array.pop();
+        array.unshift(lastElement);
+        document.getElementById("result").textContent = "Rotated Array: " + array.join(", ");
+      }, 2000);
+    }
+    
+    function stopRotation() {
+      clearInterval(intervalId);
+    }
+    </script>
+</body>
+</html>
+

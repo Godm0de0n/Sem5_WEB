@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Element Removal</title>
+</head>
+<body>
+  <h1>Array Element Removal</h1>
+  <label for="inputArray">Enter an array:</label>
+  <input type="text" id="inputArray" placeholder="e.g., 1, 2, 3, 4, 5">
+  <br>
+  <label for="inputIndex">Enter the index of the element to remove:</label>
+  <input type="number" id="inputIndex" placeholder="e.g., 2">
+  <br>
+  <button onclick="removeElement()">Remove Element</button>
+  <p id="result"></p>
+
+  <script>
+    function removeElement() {
+    var inputArray = document.getElementById("inputArray").value;
+    var inputIndex = parseInt(document.getElementById("inputIndex").value);
+
+    var array = inputArray.split(',').map(function(item) {
+        return item.trim();
+    });
+
+    if (!isValidIndex(array, inputIndex)) {
+        alert("Invalid input. Please enter a valid index.");
+        return;
+    }
+
+    var removedElement = array.splice(inputIndex, 1)[0];
+
+    document.getElementById("result").textContent = "Removed element: " + removedElement + "\nArray after removal: " + array.join(", ");
+    }
+
+    function isValidIndex(array, index) {
+    return Array.isArray(array) && array.length > index && index >= 0;
+    }
+
+  </script>
+</body>
+</html>

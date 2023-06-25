@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Common Elements in Three Arrays</title>
+</head>
+<body>
+  <h1>Common Elements in Three Arrays</h1>
+  <label for="inputArray1">Enter Array 1:</label>
+  <input type="text" id="inputArray1" placeholder="e.g., 1, 2, 3, 4, 5">
+  <br>
+  <label for="inputArray2">Enter Array 2:</label>
+  <input type="text" id="inputArray2" placeholder="e.g., 3, 4, 5, 6, 7">
+  <br>
+  <label for="inputArray3">Enter Array 3:</label>
+  <input type="text" id="inputArray3" placeholder="e.g., 5, 6, 7, 8, 9">
+  <br>
+  <button onclick="findCommonElements()">Find Common Elements</button>
+  <p id="result"></p>
+
+  <script>
+    function findCommonElements() {
+    var inputArray1 = document.getElementById("inputArray1").value;
+    var inputArray2 = document.getElementById("inputArray2").value;
+    var inputArray3 = document.getElementById("inputArray3").value;
+  
+    var array1 = inputArray1.split(',').map(function(item) {
+      return item.trim();
+    });
+  
+    var array2 = inputArray2.split(',').map(function(item) {
+      return item.trim();
+    });
+  
+    var array3 = inputArray3.split(',').map(function(item) {
+      return item.trim();
+    });
+  
+    var sortedArray1 = array1.sort();
+    var sortedArray2 = array2.sort();
+    var sortedArray3 = array3.sort();
+  
+    var commonElements = [];
+  
+    var i = 0, j = 0, k = 0;
+  
+    while (i < sortedArray1.length && j < sortedArray2.length && k < sortedArray3.length) {
+      if (sortedArray1[i] === sortedArray2[j] && sortedArray2[j] === sortedArray3[k]) {
+        commonElements.push(sortedArray1[i]);
+        i++;
+        j++;
+        k++;
+      } else if (sortedArray1[i] < sortedArray2[j]) {
+        i++;
+      } else if (sortedArray2[j] < sortedArray3[k]) {
+        j++;
+      } else {
+        k++;
+      }
+    }
+  
+    if (commonElements.length === 0) {
+      document.getElementById("result").textContent = "No common elements found.";
+    } else {
+      document.getElementById("result").textContent = "Common Elements: " + commonElements.join(", ");
+    }
+  }
+  </script>
+</body>
+</html>

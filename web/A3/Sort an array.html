@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Array Sorting Example</title>
+</head>
+<body>
+  <h1>Array Sorting Example</h1>
+  <label for="inputArray">Enter an array:</label>
+  <input type="text" id="inputArray" placeholder="e.g., 7, 2, 5, 1, 8, 3">
+  <button onclick="sortArray()">Sort Array</button>
+  <p id="result"></p>
+
+  <script>
+    function sortArray() {
+    var inputArray = document.getElementById("inputArray").value;
+    var array = inputArray.split(',').map(function(item) {
+        return parseInt(item.trim());
+    });
+
+    if (!isValidArray(array)) {
+        alert("Invalid input. Please enter a valid comma-separated array.");
+        return;
+    }
+
+    var sortedArray = array.slice().sort(function(a, b) {
+        return a - b;
+    });
+
+    document.getElementById("result").textContent = "Sorted Array: " + sortedArray.join(", ");
+    }
+
+    function isValidArray(array) {
+    return Array.isArray(array) && array.length > 1;
+    }
+
+  </script>
+</body>
+</html>

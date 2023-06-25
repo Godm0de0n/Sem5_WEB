@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Date Calculator</title>
+</head>
+<body>
+  <h1>Date Calculator</h1>
+  
+  <label for="startDate">Start Date:</label>
+  <input type="date" id="startDate">
+  
+  <label for="endDate">End Date:</label>
+  <input type="date" id="endDate">
+  
+  <button onclick="calculateDays()">Calculate</button>
+  
+  <p id="result"></p>
+  
+  <script>
+    function calculateDays() {
+  var startDate = new Date(document.getElementById('startDate').value);
+  var endDate = new Date(document.getElementById('endDate').value);
+
+  var timeDifference = endDate.getTime() - startDate.getTime();
+
+
+  var daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+
+
+  document.getElementById('result').textContent = 'Number of days: ' + daysDifference;
+}
+
+  </script>
+</body>
+</html>

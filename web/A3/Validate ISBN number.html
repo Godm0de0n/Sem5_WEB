@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ISBN Validator</title>
+</head>
+<body>
+  <h1>ISBN Validator</h1>
+  <input type="text" id="isbnInput" placeholder="Enter ISBN">
+  <button onclick="validateISBN()">Validate</button>
+  <p id="result"></p>
+
+  <script>
+    function validateISBN() {
+    var isbn = document.getElementById("isbnInput").value;
+    var pattern = /^(?:ISBN(?:-1[03])?:? )?(?=[-0-9X]{17}$|[-0-9x]{13}$|[0-9X]{10}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?(?:[0-9]+[- ]?){2}[0-9X]$/;
+
+    if (pattern.test(isbn)) {
+        document.getElementById("result").textContent = "Valid ISBN.";
+    } else {
+        document.getElementById("result").textContent = "Invalid ISBN.";
+    }
+    }
+
+  </script>
+</body>
+</html>
