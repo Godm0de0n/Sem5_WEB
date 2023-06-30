@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getType(argument) {
+          var type = typeof argument;
+          return type;
+        }
+    
+        function checkType() {
+            var result1 = getType(42);         // returns "number"
+            var result2 = getType("Hello");    // returns "string"
+            var result3 = getType(true);       // returns "boolean"
+            var result4 = getType([]);         // returns "object"
+            var result5 = getType(null);       // returns "object"
+            var result6 = getType(undefined);  // returns "undefined"
+
+
+          document.getElementById("outputType1").textContent = result1;
+          document.getElementById("outputType2").textContent = result2;
+          document.getElementById("outputType3").textContent = result3;
+          document.getElementById("outputType4").textContent = result4;
+          document.getElementById("outputType5").textContent = result5;
+          document.getElementById("outputType6").textContent = result6;
+        }
+      </script>
+</head>
+<body>
+    <button onclick="checkType()">Check Type</button>
+    <br />
+    <label for="outputType1">Type of 42:</label>
+    <span id="outputType1"></span>
+    <br />
+    <label for="outputType2">Type of "hello":</label>
+    <span id="outputType2"></span>
+    <br />
+    <label for="outputType3">Type of ture:</label>
+    <span id="outputType3"></span>
+    <br />
+    <label for="outputType4">Type of []:</label>
+    <span id="outputType4"></span>
+    <br />
+    <label for="outputType5">Type of null:</label>
+    <span id="outputType5"></span>
+    <br />
+    <label for="outputType6">Type of undefind:</label>
+    <span id="outputType6"></span>
+</body>
+</html>

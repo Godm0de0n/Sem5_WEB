@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function findSecondLowestAndGreatest() {
+          var userInput = document.getElementById("inputArray").value;
+          var numbers = userInput.split(",").map(Number);
+
+          var filteredNumbers = numbers.filter(function(number) {
+            return !isNaN(number);
+          });
+    
+          var sortedNumbers = filteredNumbers.sort(function(a, b) {
+            return a - b;
+          });
+
+          var secondLowest = sortedNumbers[1];
+
+          var secondGreatest = sortedNumbers[sortedNumbers.length - 2];
+
+          document.getElementById("outputResult").textContent = "Second Lowest: " + secondLowest +
+            ", Second Greatest: " + secondGreatest;
+        }
+      </script>
+</head>
+<body>
+    <label for="inputArray">Enter an array of numbers (comma-separated):</label>
+    <input type="text" id="inputArray" />
+    <button onclick="findSecondLowestAndGreatest()">Find</button>
+    <br />
+    <label for="outputResult">Result:</label>
+    <span id="outputResult"></span>
+</body>
+</html>

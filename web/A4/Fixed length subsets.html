@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+      function generateSubsets() {
+        var userInput = document.getElementById("inputArray").value;
+        var fixedLength = parseInt(document.getElementById("inputLength").value);
+
+        var array = userInput.split(",");
+
+        array = array.map(function(element) {
+          return element.trim();
+        });
+
+        var subsets = [];
+
+        if (array.length >= fixedLength) {
+          generateSubsetsRecursive(array, fixedLength, [], subsets);
+        }
+
+        document.getElementById("outputSubsets").textContent = JSON.stringify(subsets);
+      }
+  
+      function generateSubsetsRecursive(array, length, currentSubset, subsets) {
+        if (currentSubset.length === length) {
+          subsets.push(currentSubset.slice());
+          return;
+        }
+  
+        for (var i = 0; i < array.length; i++) {
+          currentSubset.push(array[i]);
+          generateSubsetsRecursive(array.slice(i + 1), length, currentSubset, subsets);
+          currentSubset.pop();
+        }
+      }
+    </script>
+</head>
+<body>
+  <label for="inputArray">Enter an array of elements (comma-separated):</label>
+  <input type="text" id="inputArray" />
+  <br />
+  <label for="inputLength">Enter the fixed length of subsets:</label>
+  <input type="number" id="inputLength" />
+  <br />
+  <button onclick="generateSubsets()">Generate</button>
+  <br />
+  <label for="outputSubsets">Subsets:</label>
+  <span id="outputSubsets"></span>
+</body>
+</html>

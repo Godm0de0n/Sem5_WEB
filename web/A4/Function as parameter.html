@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function greet(name) {
+          var greeting = "Hello, " + name + "!";
+          document.getElementById("greeting").textContent = greeting;
+        }
+    
+        function executeFunction(func, parameter) {
+          func(parameter);
+        }
+    
+        function runProgram() {
+          var name = document.getElementById("inputName").value;
+          executeFunction(greet, name);
+        }
+      </script>
+</head>
+<body>
+    <label for="inputName">Enter your name:</label>
+    <input type="text" id="inputName" />
+    <button onclick="runProgram()">Run Program</button>
+    <br />
+    <h2 id="greeting"></h2>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Example</title>
+  <script>
+    function hideElement() {
+      var element = document.getElementById("myElement");
+      element.style.display = "none";
+    }
+  </script>
+</head>
+<body>
+  <button onclick="hideElement()">Hide Element (JavaScript)</button>
+  <div id="myElement">
+    This is the element to be hidden.
+  </div>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#hideButton").click(function() {
+        $("#myElement").hide();
+      });
+    });
+  </script>
+</head>
+<body>
+  <button id="hideButton">Hide Element (jQuery)</button>
+  <div id="myElement">
+    This is the element to be hidden.
+  </div>
+</body>
+</html>
